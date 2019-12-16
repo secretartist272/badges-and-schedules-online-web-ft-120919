@@ -1,35 +1,25 @@
-# Write your code here.
+
 
 def badge_maker(name)
-  "Hello, my name is #{name}."
+  return "Hello, my name is #{name}."
 end
 
-def batch_badge_creator(attendees) 
-  badge_names = []
-    attendees.each do |attendee|
-      badge_names << "Hello, my name is #{attendee}."
+def batch_badge_creator(names)
+  greetings = [] # initialize greetings as an empty array
+  names.each do |name| # for each name in the names array
+    greetings <<  badge_maker(name)# add a greeting for that name
   end
-  badge_names
+  return greetings # return the array of all greetings, at the end
 end
 
-def batch_badge_creator
-    batch_badge_creators.collect do |attendee|
-      badge_maker(attendee)
-    end
-    badge_maker
-end
-
-def assign_rooms(attendees)
-  rooms = []
-  index = 1 
-  attendees.each_with_index do |attendee, index|
-    rooms << "Hello, #{attendee}! You'll be assigned to room #{index += 1}!"
+def assign_rooms(speakers)
+  greet = []
+  speakers.each_with_index{ |speakers, index| greet << "Hello, #{speakers}! You'll be assigned to room #{index+1}!"}
+  return greet
   end
-  rooms
-end
 
 def printer(attendees)
-  batch_badge_creator(attendees).each {|badge_message| puts badge_message }
-  assign_rooms(attendees).each {|room_assignment| puts room_assignment }
+  badges_and_room_assignments.each_line do |line|
+    puts "#{printer(attendees)}"
 end
 
